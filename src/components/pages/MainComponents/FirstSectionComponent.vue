@@ -1,5 +1,5 @@
 <template>
-  <div class="section-1" :style="{height: backHeight + 'px',}">
+  <div class="section" :style="{height: backHeight + 'px',}">
     <img src="@/assets/icons/logo-car.svg">
   </div>
 </template>
@@ -30,7 +30,7 @@ export default {
 </script>
 
 <style scoped>
-.section-1 {
+.section {
   grid-column: 1/4;
   background: url('@/assets/main_page/img1.jpg') no-repeat;
   background-size: cover;

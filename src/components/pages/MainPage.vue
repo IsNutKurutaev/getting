@@ -2,6 +2,7 @@
   <LayoutComponent>
     <HeaderComponent />
     <FirstSectionComponent />
+    <WelcomeSectionComponent />
   </LayoutComponent>
 </template>
 
@@ -9,6 +10,7 @@
 import LayoutComponent from "@/layouts/LayoutComponent"
 import HeaderComponent from "@/components/HeaderComponent";
 import FirstSectionComponent from "@/components/pages/MainComponents/FirstSectionComponent";
+import WelcomeSectionComponent from "@/components/pages/MainComponents/WelcomeSectionComponent";
 
 export default {
   name: "MainPage",
@@ -16,10 +18,25 @@ export default {
     LayoutComponent,
     HeaderComponent,
     FirstSectionComponent,
+    WelcomeSectionComponent,
   },
 }
 </script>
 
-<style scoped>
-
+<style>
+  .h {
+    font-family: "Oswald";
+    font-weight: 500;
+    font-size: 32px;
+  }
+  .h-1 {
+    font-size: 36px;
+  }
+  .h-2 {
+    margin: 20px 0;
+    text-indent: 50px;
+  }
+  .h-4 {
+    font-size: 20px;
+  }
 </style>

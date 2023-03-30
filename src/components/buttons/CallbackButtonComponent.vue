@@ -17,5 +17,9 @@ export default {
     font-weight: 500;
     padding: 12px 25px;
     cursor: pointer;
+    transition: .5s ease-in-out;
+  }
+  .button:hover {
+    opacity: 0.8;
   }
 </style>

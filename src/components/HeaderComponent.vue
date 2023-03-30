@@ -19,7 +19,7 @@ import CallbackButtonComponent from "@/components/buttons/CallbackButtonComponen
         navItems: [
           'О Нас',
           'Процесс',
-          'Цены',
+          'Услуги',
           'Галерея',
           'Контакты',
         ]
