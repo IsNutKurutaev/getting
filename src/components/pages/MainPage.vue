@@ -3,6 +3,7 @@
     <HeaderComponent />
     <FirstSectionComponent />
     <WelcomeSectionComponent />
+    <TariffCardComponent />
   </LayoutComponent>
 </template>
 
@@ -11,6 +12,7 @@ import LayoutComponent from "@/layouts/LayoutComponent"
 import HeaderComponent from "@/components/HeaderComponent";
 import FirstSectionComponent from "@/components/pages/MainComponents/FirstSectionComponent";
 import WelcomeSectionComponent from "@/components/pages/MainComponents/WelcomeSectionComponent";
+import TariffCardComponent from "@/components/pages/MainComponents/TariffCardComponent";
 
 export default {
   name: "MainPage",
@@ -19,6 +21,7 @@ export default {
     HeaderComponent,
     FirstSectionComponent,
     WelcomeSectionComponent,
+    TariffCardComponent,
   },
 }
 </script>

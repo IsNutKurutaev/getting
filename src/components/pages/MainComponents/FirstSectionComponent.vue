@@ -23,7 +23,6 @@ export default {
       const bodyHeight = document.documentElement.clientHeight;
 
       this.backHeight = bodyHeight - (header.offsetHeight + 40);
-      console.log('1')
     }
   },
 }

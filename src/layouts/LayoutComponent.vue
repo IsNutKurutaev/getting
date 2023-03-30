@@ -16,7 +16,7 @@ html {
   --primary-color: #FD7A00;
 }
 body {
-  background: #EFECF3;
+  background: #F4F4F4;
   font-family: "Roboto";
   font-weight: 500;
   font-size: 100%;
