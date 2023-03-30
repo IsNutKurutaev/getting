@@ -3,18 +3,20 @@
     <h1 class="h h-2">Услуги</h1>
     <div class="cards">
       <div class="card" v-for="(item, index) in card_data" :key="index">
-        <img :src="item.url.image" alt="Автомобиль" class="card-img">
+        <div class="image-wrapper">
+          <img :src="item.url.image" alt="Автомобиль">
+        </div>
         <div class="card-description">
-          <p class="card-description-text"
+          <p class="h-4 card-description-text"
              v-html="item.desc">
           </p>
         </div>
-        <div class="card-tariffs" v-for="(tariff, i) in item.tariffs" :key="i">
-          <p class="card-text"
+        <div class="card-tariffs">
+          <p class="card-text"  v-for="(tariff, i) in item.tariffs" :key="i"
              v-html="tariff">
           </p>
         </div>
-        <callback-button-component class="card-button">Узнать цену</callback-button-component>
+        <callback-button-component class="h-4 card-button">Узнать цену</callback-button-component>
       </div>
     </div>
   </div>
@@ -85,32 +87,56 @@ export default {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    gap: 25px;
+    gap: 18px;
   }
   .card {
-    padding: 10px;
+    padding: 10px 0;
     width: 100%;
     background: #FFFFFF;
+    border-radius: 10px;
     display: grid;
     grid-template-columns: auto 240px auto;
     grid-template-rows: auto;
   }
-  .card-img {
+  .image-wrapper {
     grid-column: 2/3;
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
   }
   .card-description {
     grid-column: 1/4;
     display: grid;
+    height: 100px;
     grid-template-columns: auto 240px auto;
+    background: #EFECF3;
+    position: relative;
+  }
+  .card-description:before {
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 100%;
+    background: #FD7A00;
+    opacity: 0.5;
   }
   .card-description-text {
     grid-column: 2/3;
+    margin: 10px 0;
   }
   .card-tariffs {
+    padding: 20px 0;
     grid-column: 2/3;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .card-text {
+    margin: 0;
   }
   .card-button {
     grid-column: 2/3;
+    padding: 15px;
   }
-
 </style>
