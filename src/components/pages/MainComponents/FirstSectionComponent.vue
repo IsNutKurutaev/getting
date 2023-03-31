@@ -1,6 +1,6 @@
 <template>
   <div class="section" :style="{height: backHeight + 'px',}">
-    <img src="@/assets/icons/logo-car.svg">
+    <img src="@/assets/icons/logo-car-opacity.svg">
   </div>
 </template>
 

@@ -137,6 +137,7 @@ export default {
   }
   .card-button {
     grid-column: 2/3;
+    margin: 5px 0;
     padding: 15px;
   }
 </style>
