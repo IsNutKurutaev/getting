@@ -1,5 +1,5 @@
 <template>
-  <div class="welcome">
+  <div class="welcome" id="about">
     <h1 class="h h-1">Добро пожаловать в нашу мастерскую</h1>
     <div class="section">
       <div class="section-item section-item-1">
@@ -14,7 +14,7 @@
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
         </iframe>
       </div>
-      <div class="section-item section-item-2">
+      <div class="section-item section-item-2" id="process">
         <h1 class="h h-2">Как мы работаем</h1>
         <div class="section-item-2-content">
           <div class="work-card">
@@ -133,7 +133,7 @@ export default {
   }
   .text {
     width: 450px;
-    font-size: 20px;
+    font-size: 16px;
   }
   .section-item-2 {
     box-shadow: 0px -10px 0px rgba(0, 0, 0, 0.25);
@@ -185,7 +185,7 @@ export default {
   .section-item-select {
     height: 85px;
     width: 350px;
-    font-size: 30px;
+    font-size: 26px;
     font-weight: 500;
     font-family: "Roboto";
     border: none;
@@ -194,11 +194,11 @@ export default {
   }
   .section-item-select:hover {
     color: #2929A9;
-    font-size: 32px;
+    font-size: 30px;
   }
   .active {
     color: #2929A9;
-    font-size: 32px;
+    font-size: 30px;
     position: relative;
     transition: 5s ease-in-out;
   }

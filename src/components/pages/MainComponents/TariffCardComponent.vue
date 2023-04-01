@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" id="services">
     <h1 class="h h-2">Услуги</h1>
     <div class="cards">
       <div class="card" v-for="(item, index) in card_data" :key="index">
