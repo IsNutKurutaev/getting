@@ -75,15 +75,30 @@ export default {
 .head-text-add {
   text-indent: 0;
   z-index: 2;
+  position: relative;
 }
 .head-text-add:before {
   content: '';
-  background: url("@/assets/icons/quot-start.svg");
+  display: block;
+  background: url("@/assets/icons/quot-end.svg");
   height: 33px;
   width: 35px;
+  position: absolute;
+  transform: rotate(0.5turn);
+  z-index: -1;
+  top: -15%;
+  left: -3%;
 }
 .head-text-add:after {
-
+  content: '';
+  display: block;
+  background: url("@/assets/icons/quot-end.svg");
+  height: 33px;
+  width: 35px;
+  position: absolute;
+  z-index: 2;
+  top: 75%;
+  left: 37%
 }
 .slogan {
   grid-column: 2/3;
