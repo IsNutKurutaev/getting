@@ -1,9 +1,10 @@
 <template>
   <LayoutComponent>
-    <headroom>
-      <div>asddsa</div>
-    </headroom>
-    <CallbackModalComponent v-show="isModalOpen" v-scroll-lock="isModalOpen" />
+    <transition>
+      <CallbackModalComponent v-show="isModalOpen" v-scroll-lock="isModalOpen" ref="callback"
+                              @open="() => {this.isModalOpen = true}"
+                              @close="() => {this.isModalOpen = false}"/>
+    </transition>
     <HeaderComponent/>
     <FirstSectionComponent/>
     <WelcomeSectionComponent/>
@@ -21,13 +22,11 @@ import WelcomeSectionComponent from "@/components/pages/MainComponents/WelcomeSe
 import TariffCardComponent from "@/components/pages/MainComponents/TariffCardComponent";
 import FooterComponent from "@/components/FooterComponent";
 import throttle from 'lodash/throttle';
-import headroom from "vue-headroom";
 
 export default {
   name: "MainPage",
   components: {
     CallbackModalComponent,
-    headroom,
     LayoutComponent,
     HeaderComponent,
     FirstSectionComponent,
@@ -38,24 +37,32 @@ export default {
   data() {
     return {
       isFirstScroll: true,
-      isModalOpen: true,
+      isModalOpen: false,
+    }
+  },
+  provide() {
+    return {
+      callback: this.getModal,
+      scrollLock: this.scrollLock,
     }
   },
   methods: {
-    handleScroll() {
+    getModal() {
+      return this.$refs.callback;
+    },
+    handleScroll(e) {
+      if (screen.width < 960 ) return;
       if (this.isFirstScroll) {
+        e.preventDefault();
         const el = document.getElementById('about').offsetTop - 20;
         window.scrollTo({top: el, behavior: "smooth"})
         return this.isFirstScroll = false;
       }
       return true;
     },
-    openModal() {
-      this.isModalOpen = true;
+    scrollLock(e) {
+      e.preventDefault();
     },
-    closeModal() {
-      this.isModalOpen = false;
-    }
   },
   mounted() {
     this.handleDebouncedScroll = throttle(this.handleScroll, 7500);

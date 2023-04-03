@@ -128,7 +128,7 @@ export default {
   }
   .copyright {
     grid-column: 1/4;
-    border-top: black 3px solid;
+    border-top: black 1px solid;
   }
   .copyright p {
     margin: 5px;

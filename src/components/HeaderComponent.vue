@@ -1,5 +1,7 @@
 <template>
-  <header class="header" ref="header">
+  <header class="header"
+          ref="header"
+          :class="{blue: isSticky}">
     <div class="container">
       <nav class="nav">
         <a class="nav__item" v-for="item in navItems" :href="'#' + item.ref" v-smooth-scroll
@@ -40,28 +42,46 @@ export default {
           ref: 'contacts',
           name: 'Контакты',
         },
-      ]
+      ],
+      isSticky: false,
     }
   },
-  mounted() {
+  methods: {
+    onscroll() {
+      const header = this.$refs.header;
+      const offset = header.getBoundingClientRect().top + window.scrollY;
 
+      if (offset > 40) {
+        this.isSticky = true;
+        return;
+      }
+
+      this.isSticky = false;
+    },
+  },
+  mounted() {
+    window.addEventListener('scroll', this.onscroll);
   }
 }
 </script>
 
 <style scoped>
-headroom {
-  grid-column: 2/3;
-}
-
 .header {
   margin: 20px 0;
   background: #FFFFFF;
   grid-column: 1/4;
   display: grid;
   grid-template-columns: auto 1200px auto;
+  position: sticky;
+  top: 0;
+  z-index: 9;
 }
-
+.blue {
+  background: #2929A9;
+}
+.blue a {
+  color: #FFFFFF!important;
+}
 .container {
   grid-column: 2/3;
   display: flex;

@@ -5,16 +5,21 @@
 </template>
 
 <script>
-import mainPage from "@/components/pages/MainPage";
 
 export default {
   name: "CallbackButtonComponent",
-
+  data() {
+    return {
+      isModalOpen: this.$refs.callback
+    }
+  },
   methods: {
     a() {
-      mainPage.methods.openModal();
+      this.callback().$emit('open');
+      window.addEventListener('wheel', this.scrollLock, {passive: false});
     }
-  }
+  },
+  inject: ['callback', 'scrollLock'],
 }
 </script>
 

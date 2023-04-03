@@ -194,13 +194,12 @@ export default {
   }
   .section-item-select:hover {
     color: #2929A9;
-    font-size: 30px;
   }
   .active {
     color: #2929A9;
     font-size: 30px;
     position: relative;
-    transition: 5s ease-in-out;
+    transition: .5s ease-in-out;
   }
   .cursor {
     position: absolute;

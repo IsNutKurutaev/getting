@@ -1,45 +1,36 @@
 <template>
   <div class="background" @click="close($event)" ref="back">
-    <transition>
-      <form action="" class="form">
-        <input type="text" id="name" placeholder="Ваше Имя" class="form-field">
-        <input type="tel" placeholder="Номер телефона" class="form-field" v-model="tel">
-        <vue-tel-input />
-        <div>
-          <input list="mark" placeholder="Марка автомобиля" class="form-field" style="margin-right: 40px">
-          <datalist id="mark">
-            <option value="hundai"></option>
-          </datalist>
-          <input list="year" placeholder="Год" class="form-field" style="width: 20%;">
-          <datalist id="year">
-            <option v-for="year in arrOfYears" :value="year" :key="year.id">{{ year }}</option>
-          </datalist>
-        </div>
-        <input list="model" placeholder="Модель автомобиля" class="form-field">
-        <datalist id="model">
-          <option value="civic"></option>
+    <form action="" class="form">
+      <input type="text" id="name" placeholder="Ваше Имя" class="form-field">
+      <input type="tel" placeholder="Номер телефона" class="form-field" v-model="tel">
+      <div>
+        <input list="mark" placeholder="Марка автомобиля" class="form-field" style="margin-right: 40px">
+        <datalist id="mark">
+          <option value="hundai"></option>
         </datalist>
-        <div class="submit">
-          <div style="display: flex; gap: 5px; align-items: center">
-            <input type="checkbox" class="checkbox" id="person-data" style="height: 25px; width: 25px">
-            <label for="person-data" style="font-size: 12px"> согласие на боратботку <br>персональных данных </label>
-          </div>
-          <input type="submit" class="form-submit">
+        <input list="year" placeholder="Год" class="form-field" style="width: 20%;">
+        <datalist id="year">
+          <option v-for="year in arrOfYears" :value="year" :key="year.id">{{ year }}</option>
+        </datalist>
+      </div>
+      <input list="model" placeholder="Модель автомобиля" class="form-field">
+      <datalist id="model">
+        <option value="civic"></option>
+      </datalist>
+      <div class="submit">
+        <div style="display: flex; gap: 5px; align-items: center">
+          <input type="checkbox" class="checkbox" id="person-data" style="height: 25px; width: 25px">
+          <label for="person-data" style="font-size: 12px"> согласие на боратботку <br>персональных данных </label>
         </div>
-      </form>
-    </transition>
+        <input type="submit" class="form-submit">
+      </div>
+    </form>
   </div>
 </template>
 
 <script>
-import MainPage from "@/components/pages/MainPage";
-import { VueTelInput } from 'vue-tel-input'
-
 export default {
   name: "CallbackModalComponent",
-  components: {
-    VueTelInput
-  },
   data() {
     return {
       arrOfYears: [],
@@ -49,12 +40,13 @@ export default {
   methods: {
     close(event) {
       if (event.target == this.$refs.back) {
-        MainPage.methods.closeModal();
+        this.callback().$emit('close')
+        window.removeEventListener('wheel', this.scrollLock);
       }
     }
   },
+  inject: ['callback', 'scrollLock'],
   mounted() {
-
     for (let i = 2023; i >= 1962; i--) {
       this.arrOfYears.push(i);
     }
@@ -63,6 +55,16 @@ export default {
 </script>
 
 <style scoped>
+.v-enter-active,
+.v-leave-active {
+  transition: 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+
 .background {
   position: fixed;
   overflow: auto;
@@ -70,7 +72,7 @@ export default {
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.8);
   z-index: 9998;
   display: grid;
   grid-template-rows: 15% auto auto;
@@ -83,7 +85,7 @@ export default {
   top: 25%;
   transform: translate(-50%, -50%);
   border-radius: 10px;
-  padding: 10px;
+  padding: 25px;
   background: #FFFFFF;
   display: flex;
   flex-direction: column;
@@ -110,6 +112,7 @@ export default {
 .submit {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 5px;
 }
 </style>
