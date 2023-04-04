@@ -1,14 +1,16 @@
-import { createStore } from 'vuex'
+import {reactive} from "vue";
 
-export default createStore({
+let store = reactive({
   state: {
+    token: localStorage.token ?? null,
   },
-  getters: {
+  setToken(newToken) {
+      this.token = newToken;
+      localStorage.setItem('token', this.token);
   },
-  mutations: {
-  },
-  actions: {
-  },
-  modules: {
+  clearToken() {
+    this.token = null;
+    localStorage.removeItem('token');
   }
-})
+});
+export default store;

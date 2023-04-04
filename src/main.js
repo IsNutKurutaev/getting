@@ -1,6 +1,5 @@
-import { createApp } from 'vue'
+import {createApp} from 'vue'
 import App from './App.vue'
-import VueSmoothScroll from "v-smooth-scroll";
-import VScrollLock from "v-scroll-lock";
+import router from './router'
 
-createApp(App).use(VScrollLock).use(VueSmoothScroll).mount('#app')
+createApp(App).use(router).mount('#app')
