@@ -36,8 +36,8 @@ export default {
   },
   data() {
     return {
-      isFirstScroll: true,
       isModalOpen: false,
+      scrolling: false,
     }
   },
   provide() {
@@ -51,22 +51,31 @@ export default {
       return this.$refs.callback;
     },
     handleScroll(e) {
-      if (screen.width < 960 ) return;
-      if (this.isFirstScroll) {
-        e.preventDefault();
-        const el = document.getElementById('about').offsetTop - 20;
-        window.scrollTo({top: el, behavior: "smooth"})
-        return this.isFirstScroll = false;
-      }
-      return true;
-    },
-    scrollLock(e) {
+      // if (screen.width < 960) return;
       e.preventDefault();
+      const elem = document.getElementById('about');
+
+      if (!this.scrolling) {
+        elem.scrollIntoView();
+        this.scrolling = true;
+      }
+      if (!this.observer) {
+        this.$data.observer = new IntersectionObserver((entries) => {
+          entries.forEach( item =>  {
+            if(item.isIntersecting) {
+              window.removeEventListener('wheel', this.handleScroll);
+              this.scrolling = false;
+              delete this.$data.observer;
+            }
+          });
+        });
+
+        this.$data.observer.observe(elem);
+      }
     },
   },
   mounted() {
-    this.handleDebouncedScroll = throttle(this.handleScroll, 7500);
-    window.addEventListener('scroll', this.handleDebouncedScroll);
+    window.addEventListener('wheel', this.handleScroll, {passive: false});
   },
 }
 </script>

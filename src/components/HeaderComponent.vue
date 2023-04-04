@@ -75,6 +75,7 @@ export default {
   position: sticky;
   top: 0;
   z-index: 9;
+  transition: .5s ease-in-out;
 }
 .blue {
   background: #2929A9;

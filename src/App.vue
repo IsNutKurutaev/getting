@@ -13,3 +13,9 @@ import 'normalize.css'
     }
   }
 </script>
+
+<style>
+html {
+  scroll-behavior: smooth;
+}
+</style>
